@@ -20,7 +20,7 @@ fn cango(t: i32, x: i32, y: i32) -> bool {
     let xab = if x >= 0 { x } else { -x };
     let yab = if y >= 0 { y } else { -y };
     if xab + yab > t {
-        return false
+        return false;
     }
 
     (xab + yab) % 2 == t % 2
@@ -38,7 +38,11 @@ fn main() {
         if i == 0 {
             vs.push((vi[0], vi[1], vi[2]));
         } else {
-            vs.push((vi[0]-v[i-1][0], vi[1]-v[i-1][1], vi[2]-v[i-1][2]));
+            vs.push((
+                vi[0] - v[i - 1][0],
+                vi[1] - v[i - 1][1],
+                vi[2] - v[i - 1][2],
+            ));
         }
     }
 

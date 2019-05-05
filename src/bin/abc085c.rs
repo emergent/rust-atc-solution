@@ -5,8 +5,10 @@ fn read<T: std::str::FromStr>() -> T {
 }
 
 fn read_vec<T: std::str::FromStr>() -> Vec<T> {
-    read::<String>().split_whitespace()
-        .map(|e| e.parse().ok().unwrap()).collect()
+    read::<String>()
+        .split_whitespace()
+        .map(|e| e.parse().ok().unwrap())
+        .collect()
 }
 
 #[allow(dead_code)]
@@ -14,7 +16,13 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
     (0..n).map(|_| read_vec()).collect()
 }
 
-fn calc(rest: u32, n: u32, satun: usize, satuv: &Vec<u32>, ans: (u32, u32, u32)) -> Option<(u32, u32, u32)> {
+fn calc(
+    rest: u32,
+    n: u32,
+    satun: usize,
+    satuv: &Vec<u32>,
+    ans: (u32, u32, u32),
+) -> Option<(u32, u32, u32)> {
     let satu = satuv[satun];
 
     if satun == satuv.len() - 1 {
@@ -26,13 +34,19 @@ fn calc(rest: u32, n: u32, satun: usize, satuv: &Vec<u32>, ans: (u32, u32, u32))
     }
 
     if rest > satu * n {
-        return None
+        return None;
     }
 
     let rem = rest / satu;
-    for i in (0..rem+1).rev() {
-        if satu * i > rest || i > n { continue; }
-        let ans_next = if satun == 0 { (i, ans.1, ans.2) } else { (ans.0, i, ans.2) };
+    for i in (0..rem + 1).rev() {
+        if satu * i > rest || i > n {
+            continue;
+        }
+        let ans_next = if satun == 0 {
+            (i, ans.1, ans.2)
+        } else {
+            (ans.0, i, ans.2)
+        };
         match calc(rest - satu * i, n - i, satun + 1, satuv, ans_next) {
             None => continue,
             Some(a) => return Some(a),
@@ -41,8 +55,6 @@ fn calc(rest: u32, n: u32, satun: usize, satuv: &Vec<u32>, ans: (u32, u32, u32))
 
     None
 }
-
-
 
 fn main() {
     let v = read_vec::<u32>();

@@ -17,13 +17,16 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
 }
 
 fn canadd(s: &str, adds: &Vec<&str>) -> bool {
-    if s.len() < 5 { return false }
+    if s.len() < 5 {
+        return false;
+    }
 
     let mut retb = false;
 
     for &a in adds {
-        if s == a { return true }
-        else if s.starts_with(a) {
+        if s == a {
+            return true;
+        } else if s.starts_with(a) {
             retb |= canadd(s.split_at(a.len()).1, adds);
         } else {
             retb |= false;
