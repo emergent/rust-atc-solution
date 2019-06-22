@@ -17,12 +17,16 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
 }
 
 fn c_or_d(x: u64, c: u64, d: u64) -> u64 {
-    let cd = lcm(c,d);
+    let cd = lcm(c, d);
     (x / c) + (x / d) - (x / cd)
 }
 
 fn gcd(x: u64, y: u64) -> u64 {
-    if x == 0 { y } else { gcd(y % x, x) }
+    if x == 0 {
+        y
+    } else {
+        gcd(y % x, x)
+    }
 }
 
 fn lcm(x: u64, y: u64) -> u64 {

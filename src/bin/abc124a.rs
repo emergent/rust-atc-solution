@@ -22,10 +22,6 @@ fn main() {
     let b = v[1];
 
     let bigger = std::cmp::max(a, b);
-    let ans = if a != b {
-        bigger * 2 - 1
-    } else {
-        bigger * 2
-    };
+    let ans = if a != b { bigger * 2 - 1 } else { bigger * 2 };
     println!("{}", ans);
 }

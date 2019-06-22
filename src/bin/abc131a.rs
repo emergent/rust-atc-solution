@@ -21,7 +21,7 @@ fn main() {
     let v = n.chars().map(|c| c as i8 + 48).collect::<Vec<i8>>();
     let mut f = false;
     for i in 0..3 {
-        if v[i] == v[i+1] {
+        if v[i] == v[i + 1] {
             f = true;
         }
     }

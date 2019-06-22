@@ -21,13 +21,16 @@ fn main() {
     let n = v[0];
     let k = v[1];
 
-    let ans = (1..n+1).map(|i| {
-        if i >= k {
-            1.0f64
-        } else {
-            1.0f64 / 2.0f64.powi(((k as f64) / (i as f64)).log2().ceil() as i32)
-        }
-    }).fold(0.0, |acc, x| acc + x) / (n as f64);
+    let ans = (1..n + 1)
+        .map(|i| {
+            if i >= k {
+                1.0f64
+            } else {
+                1.0f64 / 2.0f64.powi(((k as f64) / (i as f64)).log2().ceil() as i32)
+            }
+        })
+        .fold(0.0, |acc, x| acc + x)
+        / (n as f64);
 
     println!("{}", ans);
 }

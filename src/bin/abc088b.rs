@@ -5,8 +5,10 @@ fn read<T: std::str::FromStr>() -> T {
 }
 
 fn read_vec<T: std::str::FromStr>() -> Vec<T> {
-    read::<String>().split_whitespace()
-        .map(|e| e.parse().ok().unwrap()).collect()
+    read::<String>()
+        .split_whitespace()
+        .map(|e| e.parse().ok().unwrap())
+        .collect()
 }
 
 #[allow(dead_code)]
@@ -25,15 +27,17 @@ fn main() {
     let mut ord = 0; // 0: alice, 1: bob
     loop {
         match an.pop() {
-            Some(i) => {
-                match ord {
-                    0 => alice += i,
-                    _ => bob += i,
-                }
-            }
+            Some(i) => match ord {
+                0 => alice += i,
+                _ => bob += i,
+            },
             None => break,
         }
-        if ord == 0 { ord = 1 } else { ord = 0 }
+        if ord == 0 {
+            ord = 1
+        } else {
+            ord = 0
+        }
     }
     println!("{}", alice - bob);
 }

@@ -7,8 +7,10 @@ fn read<T: std::str::FromStr>() -> T {
 }
 
 fn read_vec<T: std::str::FromStr>() -> Vec<T> {
-    read::<String>().split_whitespace()
-        .map(|e| e.parse().ok().unwrap()).collect()
+    read::<String>()
+        .split_whitespace()
+        .map(|e| e.parse().ok().unwrap())
+        .collect()
 }
 
 #[allow(dead_code)]
@@ -19,7 +21,7 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
 fn main() {
     let n = read::<i32>();
     let mut v = Vec::new();
-    for _ in 1..n+1 {
+    for _ in 1..n + 1 {
         let d = read::<i32>();
         v.push(d);
     }

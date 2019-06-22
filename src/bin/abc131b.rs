@@ -22,7 +22,7 @@ fn main() {
     let l = v[1];
 
     let mut tastes = Vec::new();
-    for i in 1..n+1 {
+    for i in 1..n + 1 {
         tastes.push(l + i - 1);
     }
 

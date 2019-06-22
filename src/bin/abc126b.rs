@@ -16,7 +16,7 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
     (0..n).map(|_| read_vec()).collect()
 }
 
-fn is_m(i : u32) -> bool {
+fn is_m(i: u32) -> bool {
     i >= 1 && i <= 12
 }
 

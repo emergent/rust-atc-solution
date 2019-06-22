@@ -5,8 +5,10 @@ fn read<T: std::str::FromStr>() -> T {
 }
 
 fn read_vec<T: std::str::FromStr>() -> Vec<T> {
-    read::<String>().split_whitespace()
-        .map(|e| e.parse().ok().unwrap()).collect()
+    read::<String>()
+        .split_whitespace()
+        .map(|e| e.parse().ok().unwrap())
+        .collect()
 }
 
 #[allow(dead_code)]
@@ -15,7 +17,10 @@ fn read_vec2<T: std::str::FromStr>(n: u32) -> Vec<Vec<T>> {
 }
 
 fn sum_digits(i: i32) -> i32 {
-    i.to_string().chars().map(|j| j as i32 - 48).fold(0, |sum, x| sum + x)
+    i.to_string()
+        .chars()
+        .map(|j| j as i32 - 48)
+        .fold(0, |sum, x| sum + x)
 }
 
 fn main() {
@@ -25,7 +30,7 @@ fn main() {
     let b = v[2];
 
     let mut sumall = 0;
-    for i in 1..n+1 {
+    for i in 1..n + 1 {
         let s = sum_digits(i);
         if s >= a && s <= b {
             sumall += i;

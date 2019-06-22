@@ -22,7 +22,7 @@ fn main() {
 
     ls.sort();
     let mut sum = 0;
-    for i in 0..(2*n) {
+    for i in 0..(2 * n) {
         if i % 2 == 0 {
             sum += ls[i]
         }
