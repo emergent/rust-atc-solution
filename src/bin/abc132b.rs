@@ -21,10 +21,10 @@ fn main() {
     let ps = read_vec::<u32>();
 
     let mut count = 0;
-    for i in 0..n-2 {
-        let mut sl = ps[i..i+3].iter().map(|j| *j).collect::<Vec<u32>>();
+    for i in 0..n - 2 {
+        let mut sl = ps[i..i + 3].iter().map(|j| *j).collect::<Vec<u32>>();
         sl.sort();
-        if sl[1] == ps[i+1] {
+        if sl[1] == ps[i + 1] {
             count += 1;
         }
     }
