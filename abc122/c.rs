@@ -34,10 +34,9 @@ fn main() {
     let s = read::<String>().chars().collect::<Vec<char>>();
     let qs = read_vec2::<usize>(q as u32);
 
-    let mut dp = vec![0u32; n+1];
+    let mut dp = vec![0u32; n + 1];
     for r in 1..n {
-        if s[r] == 'C' &&
-            s[r - 1] == 'A' {
+        if s[r] == 'C' && s[r - 1] == 'A' {
             dp[r] = dp[r - 1] + 1;
         } else {
             dp[r] = dp[r - 1];
@@ -52,11 +51,10 @@ fn main() {
         let ans = {
             if l == 1 {
                 dp[r - 1]
-            } else if l >= 2 && s[l - 1] == 'C' &&
-                s[l - 2] == 'A' {
-                dp[r-1] - dp[l-2] - 1
+            } else if l >= 2 && s[l - 1] == 'C' && s[l - 2] == 'A' {
+                dp[r - 1] - dp[l - 2] - 1
             } else {
-                dp[r-1] - dp[l-2]
+                dp[r - 1] - dp[l - 2]
             }
         };
         println!("{}", ans);

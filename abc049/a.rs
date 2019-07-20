@@ -25,5 +25,5 @@ fn yn(result: bool) {
 fn main() {
     let c = read::<String>().chars().nth(0).unwrap();
 
-    yn(c=='a' || c=='e' || c=='i' || c=='o' || c=='u');
+    yn(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }

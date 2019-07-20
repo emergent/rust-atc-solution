@@ -41,9 +41,11 @@ fn main() {
     let b = v[1];
 
     if a == 0 && b == 0 {
-        println!("0"); return;
+        println!("0");
+        return;
     } else if a == b {
-        println!("{}", a); return;
+        println!("{}", a);
+        return;
     }
 
     let mut ans = 0;

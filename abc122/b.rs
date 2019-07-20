@@ -22,8 +22,8 @@ fn yn(result: bool) {
     }
 }
 
-fn is_ACGT(c: char) -> bool {
-    c=='A' || c=='C' || c=='G' || c=='T'
+fn is_agct(c: char) -> bool {
+    c == 'A' || c == 'C' || c == 'G' || c == 'T'
 }
 
 fn main() {
@@ -31,7 +31,7 @@ fn main() {
     let mut max_count = 0;
     let mut count = 0;
     for c in s.chars() {
-        if is_ACGT(c) {
+        if is_agct(c) {
             count += 1;
         } else {
             max_count = std::cmp::max(max_count, count);
