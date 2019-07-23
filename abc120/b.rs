@@ -41,7 +41,7 @@ fn main() {
     let g = gcd(a, b);
 
     let mut d = 0;
-    for i in (1..g+1).rev() {
+    for i in (1..g + 1).rev() {
         if g % i == 0 {
             d += 1;
             if d == k {

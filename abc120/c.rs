@@ -34,8 +34,8 @@ fn main() {
     }
 
     let v = s.chars().collect::<Vec<char>>();
-    let count0 = v.iter().filter(|&c| *c=='0').count() as i32;
-    let count1 = v.iter().filter(|&c| *c=='1').count() as i32;
+    let count0 = v.iter().filter(|&c| *c == '0').count() as i32;
+    let count1 = v.iter().filter(|&c| *c == '1').count() as i32;
     let sa = (count0 - count1).abs() as usize;
 
     println!("{}", n - sa);
