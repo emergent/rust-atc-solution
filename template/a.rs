@@ -28,6 +28,7 @@ fn main() {
     /* single input
     let n = read::<usize>();
     let n = read::<u32>();
+    let s = read::<String>();
     */
 
     /* vec input
