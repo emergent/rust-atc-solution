@@ -28,54 +28,26 @@ fn main() {
     let s = read::<String>().chars().collect::<Vec<char>>();
     let n = s.len() as usize;
 
-    let mut dp = vec![vec![0i64; 13]; n];
+    let mut dp = vec![vec![0i64; 13]; n + 1];
 
+    dp[0][0] = 1;
     for i in 0..n {
-        if i == 0 {
-            if s[i] == '?' {
-                for j in 0..10 {
-                    dp[i][j] = 1;
-                }
-                for j in 10..13 {
-                    dp[i][j] = -1;
-                }
-            } else {
-                let c = s[i] as usize - '0' as usize;
-                for j in 0..13usize {
-                    if j == c {
-                        dp[i][j] = 1;
-                    } else {
-                        dp[i][j] = -1;
-                    }
+        if s[i] == '?' {
+            for j in 0..10 {
+                for k in 0..13 {
+                    dp[i + 1][(k * 10 + j) % 13] += dp[i][k]
                 }
             }
         } else {
-            if s[i] == '?' {
-                for j in 0..10 {
-                    for k in 0..13 {
-                        if dp[i - 1][k] != -1 {
-                            dp[i][(k * 10 + j) % 13] += dp[i - 1][k]
-                        }
-                    }
-                }
-            } else {
-                let c = s[i] as usize - '0' as usize;
-                for k in 0..13 {
-                    if dp[i - 1][k] != -1 {
-                        dp[i][(k * 10 + c) % 13] += dp[i - 1][k];
-                    }
-                }
+            let c = s[i] as usize - '0' as usize;
+            for k in 0..13 {
+                dp[i + 1][(k * 10 + c) % 13] += dp[i][k];
             }
         }
 
         for j in 0..13 {
-            dp[i][j] %= 1000000007;
-            //println!("({}, {}): {}", i, j, dp[i][j]);
+            dp[i + 1][j] %= 1000000007;
         }
     }
-    if dp[n - 1][5] == -1 {
-        println!("{}", 0);
-    } else {
-        println!("{}", dp[n - 1][5]);
-    }
+    println!("{}", dp[n][5]);
 }
