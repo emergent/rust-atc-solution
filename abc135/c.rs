@@ -31,19 +31,19 @@ fn main() {
     let b = read_vec::<u64>();
 
     let mut count = 0;
-    for i in 0.. n {
+    for i in 0..n {
         if a[i] > b[i] {
             count += b[i];
         } else {
             let rest = b[i] - a[i];
             count += a[i];
 
-            if a[i+1] > rest {
+            if a[i + 1] > rest {
                 count += rest;
-                a[i+1] -= rest;
+                a[i + 1] -= rest;
             } else {
-                count += a[i+1];
-                a[i+1] = 0;
+                count += a[i + 1];
+                a[i + 1] = 0;
             }
         }
     }

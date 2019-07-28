@@ -31,7 +31,7 @@ fn main() {
 
     if a == b {
         println!("0");
-    } else if (a + b) %2 == 0 {
+    } else if (a + b) % 2 == 0 {
         println!("{}", (a + b) / 2);
     } else {
         println!("IMPOSSIBLE");

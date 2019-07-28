@@ -42,7 +42,7 @@ fn main() {
             } else {
                 let c = s[i] as usize - '0' as usize;
                 for j in 0..13usize {
-                    if j == c  {
+                    if j == c {
                         dp[i][j] = 1;
                     } else {
                         dp[i][j] = -1;
@@ -53,7 +53,7 @@ fn main() {
             if s[i] == '?' {
                 for j in 0..10 {
                     for k in 0..13 {
-                        if dp[i-1][k] != -1 {
+                        if dp[i - 1][k] != -1 {
                             dp[i][(k * 10 + j) % 13] += dp[i - 1][k]
                         }
                     }
@@ -61,7 +61,7 @@ fn main() {
             } else {
                 let c = s[i] as usize - '0' as usize;
                 for k in 0..13 {
-                    if dp[i-1][k] != -1 {
+                    if dp[i - 1][k] != -1 {
                         dp[i][(k * 10 + c) % 13] += dp[i - 1][k];
                     }
                 }
@@ -73,7 +73,7 @@ fn main() {
             //println!("({}, {}): {}", i, j, dp[i][j]);
         }
     }
-    if dp[n-1][5] == -1 {
+    if dp[n - 1][5] == -1 {
         println!("{}", 0);
     } else {
         println!("{}", dp[n - 1][5]);

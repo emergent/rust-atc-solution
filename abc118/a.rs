@@ -30,8 +30,8 @@ fn main() {
     let b = v[1];
 
     if b % a == 0 {
-        println!("{}", a+b);
+        println!("{}", a + b);
     } else {
-        println!("{}", b-a);
+        println!("{}", b - a);
     }
 }

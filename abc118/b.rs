@@ -32,8 +32,8 @@ fn main() {
     let mut vs = vec![0usize; m];
     for _i in 0..n {
         let v2 = read_vec::<usize>();
-        for j in 1..(v2[0]+1){
-            vs[v2[j]-1] += 1;
+        for j in 1..(v2[0] + 1) {
+            vs[v2[j] - 1] += 1;
         }
     }
 
