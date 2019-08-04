@@ -27,5 +27,5 @@ fn yn(result: bool) {
 fn main() {
     let h1 = read::<i32>();
     let h2 = read::<i32>();
-    println!("{}", h1-h2);
+    println!("{}", h1 - h2);
 }
