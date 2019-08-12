@@ -35,17 +35,17 @@ fn main() {
     for _ in 0..n {
         let u = read_vec::<usize>();
         if u[0] <= m {
-            v.push((m-u[0], u[1] as u64));
+            v.push((m - u[0], u[1] as u64));
         }
     }
-    v.sort_by_key(|&(a,_)| a);
+    v.sort_by_key(|&(a, _)| a);
     //println!("v={:?}", v);
 
     let mut ans = 0;
     let mut que = BinaryHeap::new();
-    for j in 0..m+1 {
+    for j in 0..m + 1 {
         while let Some((a, b)) = v.pop() {
-            if m-a > j {
+            if m - a > j {
                 v.push((a, b));
                 break;
             }

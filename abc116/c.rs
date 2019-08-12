@@ -39,14 +39,14 @@ fn main() {
             if v[i] > 0 && v[i] >= v[i + 1] {
                 count += v[i];
             }
-        } else if i == n-1 {
-            if v[i] > v[i-1] {
+        } else if i == n - 1 {
+            if v[i] > v[i - 1] {
                 count += v[i];
             }
         } else {
-            if v[i] > v[i-1] && v[i] >= v[i+1] {
+            if v[i] > v[i - 1] && v[i] >= v[i + 1] {
                 count += v[i];
-            } else if v[i] <= v[i-1] && v[i] < v[i+1] {
+            } else if v[i] <= v[i - 1] && v[i] < v[i + 1] {
                 count -= v[i];
             }
         }
