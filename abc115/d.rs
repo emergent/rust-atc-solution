@@ -26,38 +26,43 @@ fn yn(result: bool) {
 
 fn main() {
     let v = read_vec::<u64>();
-    let n = v[0] as u32;
+    let n = v[0];
     let mut x = v[1];
 
-    let mut len = 2u64.pow(n);
-    for i in 0..n {
-        len += 2u64.pow(n - i - 1) * 3u64;
+    let mut len = 1;
+    for _ in 0..n {
+        len = 2u64 * len + 3u64;
     }
-    let mut pat = 2u64.pow(n + 1) - 1;
+    let mut pat = 1;
+    for _ in 0..n {
+        pat = 2u64 * pat + 1u64;
+    }
 
     let mut count: u64 = 0;
     loop {
-        //println!("{} {}", len, pat);
+        //println!("{} {} {} {}", len, pat, x, count);
+        let mid = (len + 1) / 2;
 
-        if x == (len + 1) / 2 {
-            count += (pat + 1) / 2;
+        if x == 1 {
+            if len == 1 {
+                count += 1;
+            }
             break;
-        } else if x == (len - 1) / 2 {
+        } else if x == mid - 1 {
             count += (pat - 1) / 2;
             break;
-        } else if x > (len + 1) / 2 {
+        } else if x == mid {
             count += (pat + 1) / 2;
-            x -= (len + 1) / 2;
+            break;
+        } else if x > mid {
+            count += (pat + 1) / 2;
+            x -= mid;
         } else {
             x -= 1; // ban
         }
 
         pat = (pat - 1) / 2;
         len = (len - 3) / 2;
-
-        if x == 0 {
-            break;
-        }
     }
     println!("{}", count);
 }
