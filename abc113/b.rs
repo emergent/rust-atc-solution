@@ -34,11 +34,15 @@ fn main() {
     let hs = read_vec::<f64>();
     let mut min = 10000000.0;
     let mut mini = 0;
-    for (i, temp) in hs.into_iter().map(|h| (a - (t - 0.006 * h)).abs()).enumerate() {
+    for (i, temp) in hs
+        .into_iter()
+        .map(|h| (a - (t - 0.006 * h)).abs())
+        .enumerate()
+    {
         if min > temp {
             min = temp;
             mini = i
         }
     }
-    println!("{}", mini+1);
+    println!("{}", mini + 1);
 }
