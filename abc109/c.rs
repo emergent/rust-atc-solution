@@ -42,7 +42,7 @@ fn main() {
 
     let mut diffs = Vec::new();
     for i in 0..n {
-        diffs.push(xs[i+1] - xs[i]);
+        diffs.push(xs[i + 1] - xs[i]);
     }
 
     let first = diffs[0];
