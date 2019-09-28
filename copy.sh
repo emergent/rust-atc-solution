@@ -7,4 +7,4 @@ fi
 CONTEST=$1
 cp -R template $CONTEST
 pushd $CONTEST
-#cp a.rs b.rs
+#cp 1.rs b.rs
