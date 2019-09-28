@@ -81,13 +81,13 @@ fn main() {
     let g = gcd(a, b);
     let root_g = {
         let mut i: u64 = 1;
-        while i*i < g {
-            i+=1;
+        while i * i < g {
+            i += 1;
         }
         i
     };
 
-    let ps = primes(root_g + 2);
+    let ps = primes(root_g + 1);
     //println!("{:?}", ps);
     let ans = factors(g, &ps);
     println!("{}", ans + 1);
