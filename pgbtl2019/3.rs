@@ -32,9 +32,9 @@ fn main() {
     let mut pins = vec![0u32; m as usize];
     for (t, ab) in abs.iter().enumerate() {
         let p = t as i32 - (ab[0] + ab[1]) as i32;
-        if p >= 0  && p < m as i32 {
+        if p >= 0 && p < m as i32 {
             pins[p as usize] = 1;
-            println!("{}: {:?}", t, pins);
+            //println!("{}: {:?}", t, pins);
         }
     }
 

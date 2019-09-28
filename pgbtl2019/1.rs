@@ -30,5 +30,5 @@ fn main() {
     let k = v[1];
     let d = v[2];
 
-    yn(k <= d && (w-k) <= d);
+    yn(k <= d && (w - k) <= d);
 }
