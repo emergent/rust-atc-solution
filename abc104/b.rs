@@ -35,7 +35,7 @@ fn main() {
                 break;
             }
         } else if i >= 2 && i <= slen - 2 && s[i] == 'C' {
-                c_count += 1;
+            c_count += 1;
         } else if s[i] < 'a' || 'z' < s[i] {
             yn(false);
             return;
