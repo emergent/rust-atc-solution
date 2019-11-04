@@ -28,5 +28,5 @@ fn main() {
     let n = read::<usize>();
     let mut v = read_vec::<i32>();
     v.sort();
-    println!("{}", (v[n-1]-v[0]).abs());
+    println!("{}", (v[n - 1] - v[0]).abs());
 }
