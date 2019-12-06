@@ -4,7 +4,7 @@ fn main() {
     let b = v[1];
 
     let mut count = 0;
-    for i in a..b+1 {
+    for i in a..b + 1 {
         if i.to_string().chars().rev().collect::<String>() == i.to_string() {
             count += 1;
         };

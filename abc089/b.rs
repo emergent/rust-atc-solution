@@ -4,7 +4,8 @@ fn main() {
     let _ = read::<usize>();
     let hs = read::<String>().chars().collect::<HashSet<_>>();
     let ans = hs.iter().count();
-    if ans == 5 { // with space
+    if ans == 5 {
+        // with space
         println!("Four");
     } else if ans == 4 {
         println!("Three");

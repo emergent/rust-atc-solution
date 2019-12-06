@@ -11,13 +11,13 @@ fn main() {
         if a + i > b {
             break;
         }
-        hs.insert(a+i);
+        hs.insert(a + i);
     }
     for j in 0..k {
         if b - j < a {
             break;
         }
-        hs.insert(b-j);
+        hs.insert(b - j);
     }
     let mut ans = hs.into_iter().collect::<Vec<_>>();
     ans.sort();
