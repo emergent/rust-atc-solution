@@ -10,7 +10,8 @@ RUSTC=rustc
 RUSTSRC=$(wildcard *.rs)
 RUSTEXE=$(RUSTSRC:.rs=)
 RUSTCOPT=-C opt-level=0 -C debuginfo=2 -C debug-assertions=yes
-RUSTFMT=rustfmt
+#RUSTFMT=rustfmt
+RUSTFMT=../fmt.sh
 
 
 all: $(CPPTARGET) $(CTARGET) $(RUSTEXE)
