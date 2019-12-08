@@ -23,7 +23,7 @@ all: $(CPPTARGET) $(CTARGET) $(RUSTEXE)
 	$(CC) $(CFLAGS) -o $@ $<
 
 %: %.rs
-	#$(RUSTFMT) $<
+	$(RUSTFMT) $<
 	$(RUSTC) $(RUSTOPT) $<
 
 clean:
