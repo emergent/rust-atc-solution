@@ -31,6 +31,6 @@ problems.each do |k, v|
     filename = filename_pref + ((count + 1) / 2).to_s
     puts filename
     puts samples[count].text
-    File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.chomp + "\n")
+    File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.chomp.gsub(/\r\n/, "\n") + "\n")
   end
 end
