@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo "usage: ${0} contest_name" 1>&2
+    exit 1
+fi
+
+CONTEST=$1
+
+if [ -d $CONTEST ]; then
+    echo "dir ${CONTEST} already exists."
+    exit 2
+else
+    cp -R template $CONTEST
+    cd $CONTEST
+    atcfetch
+fi

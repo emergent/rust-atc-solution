@@ -1,0 +1,28 @@
+#!/bin/bash
+set -eu
+if [ $# -ne 1 ]; then
+    echo 'specify args'
+    exit 1
+fi
+
+file=$1
+p=${file%.*}
+ext=${file#${p}.}
+
+for s in `ls data_${p}/sample_*`; do
+
+    if [ $ext = 'rs' ]; then
+        make ${p} > /dev/null 2>&1 && cat $s | ./${p} > ans
+    elif [ $ext = 'py' ]; then
+        cat $s | python3 ${file} > ans
+    fi
+
+    set +e
+    s_pref=${s%_*}
+    ansfile="data_${p}/answer${s#${s_pref}}"
+    cmp -s ans ${ansfile}
+    case $? in
+        0 ) printf "$(basename $s): [\e[32;1mAC\e[m]\n"; rm ans;;
+        * ) printf "$(basename $s): [\e[31;1mNG\e[m]\n";echo -e "== Your answer:\n`cat ans`\n== Collect answer:\n`cat ${ansfile}`"; rm ans;;
+    esac
+done
