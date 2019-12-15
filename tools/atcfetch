@@ -15,7 +15,7 @@ nodes.each do |node|
   problems[problem.text] = problem[0][:href]
 end
 
-puts problems
+old_problems_flag = false
 
 problems.each do |k, v|
   p_dir = format('data_%s', k.downcase)
@@ -25,12 +25,32 @@ problems.each do |k, v|
 
   xp = format('//div[@class="part"]/section/pre')
   samples = p_doc.xpath(xp)
-  count_max = samples.size / 2
-  1.upto(count_max - 1) do |count|
-    filename_pref = count.odd? ? 'sample_' : 'answer_'
-    filename = filename_pref + ((count + 1) / 2).to_s
-    puts filename
-    puts samples[count].text
-    File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.chomp.gsub(/\r\n/, "\n") + "\n")
+
+  if samples.empty?
+    xp = format('//div[@id="task-statement"]/section/pre')
+    samples = p_doc.xpath(xp)
+    old_problems_flag = true
+  end
+
+  if old_problems_flag
+    start = 0
+    count_max = samples.size
+    start.upto(count_max - 1) do |count|
+      filename_pref = count.even? ? 'sample_' : 'answer_'
+      filename = filename_pref + (count / 2 + 1).to_s
+      puts filename
+      puts samples[count].text.strip
+      File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.strip.gsub(/\r\n/, "\n") + "\n")
+    end
+  else
+    start = 1
+    count_max = samples.size / 2
+    start.upto(count_max - 1) do |count|
+      filename_pref = count.odd? ? 'sample_' : 'answer_'
+      filename = filename_pref + ((count + 1) / 2).to_s
+      puts filename
+      puts samples[count].text.strip
+      File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.strip.gsub(/\r\n/, "\n") + "\n")
+    end
   end
 end
