@@ -36,7 +36,7 @@ problems.each do |k, v|
   if samples.empty?
     xp = format('//div[@id="task-statement"]//section/pre')
     samples = p_doc.xpath(xp)
-    #old_problems_flag = true
+    # old_problems_flag = true
   end
 
   old_problems_flag2 = true if parent <= 'abc040'
@@ -46,19 +46,22 @@ problems.each do |k, v|
     count_max = samples.size
     start.upto(count_max - 1) do |count|
       filename_pref = count.odd? ? 'sample_' : 'answer_'
-      #filename = filename_pref + (count / 2 + 1).to_s
-      filename = filename_pref + ((count+1) / 2).to_s
+      # filename = filename_pref + (count / 2 + 1).to_s
+      filename = filename_pref + ((count + 1) / 2).to_s
       puts 'a'
       puts filename
       puts samples[count].text.strip
       File.open(p_dir + '/' + filename, 'wb').write(samples[count].text.strip.gsub(/\r\n/, "\n") + "\n")
     end
   elsif old_problems_flag2
-    start = 1
+    # start = 1
+    start = 0
     count_max = samples.size
+    # start.upto(count_max - 1) do |count|
+    # filename_pref = count.odd? ? 'sample_' : 'answer_'
     start.upto(count_max - 1) do |count|
-      filename_pref = count.odd? ? 'sample_' : 'answer_'
-      filename = filename_pref + ((count + 1) / 2).to_s
+      filename_pref = count.even? ? 'sample_' : 'answer_'
+      filename = filename_pref + (count / 2 + 1).to_s
       puts 'b'
       puts filename
       puts samples[count].text.strip
