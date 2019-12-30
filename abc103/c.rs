@@ -1,7 +1,7 @@
 fn main() {
     let _ = read::<usize>();
     let a = read_vec::<u64>();
-    let ans = a.into_iter().map(|x| x-1).sum::<u64>();
+    let ans = a.into_iter().map(|x| x - 1).sum::<u64>();
     println!("{}", ans);
 }
 
