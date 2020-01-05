@@ -7,13 +7,8 @@ fn main() {
         let c = hm.entry(a).or_insert(0);
         *c += 1;
     }
-    let mut count = 0;
-    for &v in hm.values() {
-        if v % 2 != 0 {
-            count += 1;
-        }
-    }
-    println!("{}", count);
+    let ans = hm.into_iter().filter(|&(_, v)| v % 2 != 0).count();
+    println!("{}", ans);
 }
 
 #[allow(dead_code)]
