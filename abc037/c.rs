@@ -4,17 +4,14 @@ fn main() {
     let k = v[1];
     let aa = read_vec::<u64>();
 
-    let m = std::cmp::min(n - k + 1, k);
-    let mut bb = vec![m as u64; n];
-    //println!("{:?}", bb);
-    for i in 0..m {
-        bb[i] = (i + 1) as u64;
-        bb[n - i - 1] = (i + 1) as u64;
-    }
-    //println!("{:?}", bb);
-    let mut sum: u64 = 0;
+    let mut s = vec![0u64; n + 1];
     for i in 0..n {
-        sum += aa[i] * bb[i];
+        s[i + 1] = aa[i] + s[i];
+    }
+
+    let mut sum = 0;
+    for i in 0..n - k + 1 {
+        sum += s[i + k] - s[i];
     }
     println!("{}", sum);
 }
