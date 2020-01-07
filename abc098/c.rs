@@ -1,27 +1,20 @@
 fn main() {
     let n = read::<usize>();
     let s = read::<String>().chars().collect::<Vec<_>>();
-    let mut es = vec![0; n];
-    let mut ws = vec![0; n];
+    let mut es = vec![0; n + 1];
+    let mut ws = vec![0; n + 1];
     for i in 0..n {
-        if i > 0 {
-            ws[i] += ws[i - 1];
-        }
-        if s[i] == 'W' {
-            ws[i] += 1;
-        }
-    }
-    for i in (0..n).rev() {
-        if i < n - 1 {
-            es[i] += es[i + 1];
-    }
         if s[i] == 'E' {
-            es[i] += 1;
+            es[i + 1] = es[i] + 1;
+            ws[i + 1] = ws[i];
+        } else {
+            es[i + 1] = es[i];
+            ws[i + 1] = ws[i] + 1;
         }
     }
     let mut ans = 1000000000;
-    for i in 0..n {
-        ans = std::cmp::min(ans, es[i] + ws[i] - 1);
+    for i in 1..n + 1 {
+        ans = std::cmp::min(ans, es[n] - es[i] + ws[i - 1]);
     }
     println!("{}", ans);
 }
