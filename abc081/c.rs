@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 fn main() {
     let v = read_vec::<usize>();
-    let _= v[0];
+    let _ = v[0];
     let k = v[1];
     let aa = read_vec::<usize>();
     let mut hm = HashMap::new();
@@ -14,7 +14,7 @@ fn main() {
         let mut v = hm.values().clone().map(|&i| i).collect::<Vec<usize>>();
         v.sort();
         let mut ans = 0;
-        for i in 0..count-k {
+        for i in 0..count - k {
             ans += v[i];
         }
         println!("{}", ans);
