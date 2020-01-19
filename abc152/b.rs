@@ -2,25 +2,12 @@ fn main() {
     let v = read_vec::<usize>();
     let a = v[0];
     let b = v[1];
-    if a >= b {
-        let x = vec![b; a];
-        println!(
-            "{}",
-            x.into_iter()
-                .map(|i| i.to_string())
-                .collect::<Vec<String>>()
-                .join("")
-        );
-    } else {
-        let x = vec![a; b];
-        println!(
-            "{}",
-            x.into_iter()
-                .map(|i| i.to_string())
-                .collect::<Vec<String>>()
-                .join("")
-        );
+    let (first, times) = if a <= b { (a, b) } else { (b, a) };
+
+    for _ in 0..times {
+        print!("{}", first);
     }
+    println!("");
 }
 
 #[allow(dead_code)]

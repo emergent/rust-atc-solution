@@ -1,13 +1,3 @@
-fn keta(x: usize) -> usize {
-    let mut keta = 0;
-    let mut y = x;
-    while y > 0 {
-        keta += 1;
-        y /= 10;
-    }
-    keta
-}
-
 fn top(x: usize) -> usize {
     let mut top = 0;
     let mut y = x;
@@ -18,40 +8,23 @@ fn top(x: usize) -> usize {
     top
 }
 
+use std::collections::HashMap;
 fn main() {
     let n = read::<usize>();
-    let k = keta(n);
-    //let t = top(n);
-    //let b = n % 10;
+    let mut hm = HashMap::new();
+    for i in 1..n + 1 {
+        let t = top(i);
+        let b = i % 10;
+        let c = hm.entry((t, b)).or_insert(0);
+        *c += 1;
+    }
 
     let mut count = 0;
-    for i in 1..n + 1 {
-        if i % 10 == 0 {
-            continue;
-        }
-        for j in 1..k + 1 {
-            //println!("{} {}", i, j);
-            if j == 1 {
-                if top(i) == i % 10 {
-                    count += 1;
-                }
-            } else if j == 2 {
-                if top(i) + i % 10 * 10 <= n {
-                    count += 1;
-                }
-            } else if j == k {
-                if i % 10 < top(n) {
-                    count += 10usize.pow((j - 2) as u32);
-                } else if i % 10 == top(n) {
-                    let a = 10usize.pow((k - 1) as u32) * (i % 10);
-                    count += (n - a) / 10;
-                    if top(i) <= n % 10 {
-                        count += 1;
-                    }
-                }
-            } else {
-                count += 10usize.pow((j - 2) as u32);
-            }
+    for i in 0..10 {
+        for j in 0..10 {
+            let cij = *hm.entry((i, j)).or_insert(0);
+            let cji = *hm.entry((j, i)).or_insert(0);
+            count += cij * cji;
         }
     }
     println!("{}", count);

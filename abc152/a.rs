@@ -1,8 +1,6 @@
 fn main() {
     let v = read_vec::<u32>();
-    let n = v[0];
-    let m = v[1];
-    yn(n == m);
+    yn(v[0] == v[1]);
 }
 
 #[allow(dead_code)]
