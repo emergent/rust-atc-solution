@@ -13,7 +13,7 @@ fn main() {
     for p in py2 {
         let c = hm.entry(p[0]).or_insert(0);
         *c += 1;
-        names.insert((p[0],p[1]), format!("{:>06}{:>06}", p[0], *c));
+        names.insert((p[0], p[1]), format!("{:>06}{:>06}", p[0], *c));
     }
 
     for x in py {
