@@ -3,7 +3,6 @@ fn main() {
     let mut v = read_vec::<u32>();
     v.sort();
 
-    let mut e = 0;
     if n % 2 != 0 {
         for i in 0..n {
             //println!("{} {} {}", i, v[i], (i as u32 + 1) / 2 * 2);
@@ -12,7 +11,6 @@ fn main() {
                 return;
             }
         }
-        e = (v.len() - 1) / 2;
     } else {
         for i in 0..n {
             //println!("{} {} {}", i, v[i], (i as u32 + 2) / 2 * 2);
@@ -21,10 +19,9 @@ fn main() {
                 return;
             }
         }
-        e = v.len() / 2;
     }
     let mut ans = 1;
-    for _ in 0..e {
+    for _ in 0..n / 2 {
         ans *= 2;
         ans %= 1000000007;
     }
