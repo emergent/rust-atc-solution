@@ -11,7 +11,7 @@ fn main() {
     }
 
     for i in 0..h {
-        let mut count  = 0;
+        let mut count = 0;
         let mut last_j = 0;
 
         for j in 0..w {
@@ -22,7 +22,7 @@ fn main() {
                     ansr[i][k] += count;
                 }
                 count = 0;
-                last_j = j+1;
+                last_j = j + 1;
             }
         }
         for k in last_j..w {
@@ -44,7 +44,7 @@ fn main() {
                     ansr[k][j] += count;
                 }
                 count = 0;
-                last_i = i+1;
+                last_i = i + 1;
             }
         }
         for k in last_i..h {
@@ -54,12 +54,12 @@ fn main() {
 
     //println!("{:?}", ansr);
     let mut a = 0;
-    for i in  0..h  {
-        for j in  0..w {
+    for i in 0..h {
+        for j in 0..w {
             a = std::cmp::max(a, ansr[i][j]);
         }
     }
-    println!("{}", a-1);
+    println!("{}", a - 1);
 }
 
 #[allow(dead_code)]
