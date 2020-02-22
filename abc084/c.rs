@@ -3,7 +3,7 @@ fn main() {
     let n = read::<usize>();
 
     let mut ansv = vec![];
-    for i in 0..n-1 {
+    for i in 0..n - 1 {
         let v = read_vec::<u32>();
         let c = v[0];
         let s = v[1];
@@ -13,7 +13,7 @@ fn main() {
             ansv[j] = ((max(s, ansv[j]) + f - 1) / f) * f + c;
         }
 
-        ansv.push(s+c);
+        ansv.push(s + c);
     }
 
     for a in ansv {

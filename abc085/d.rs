@@ -14,7 +14,7 @@ fn main() {
     aa.sort();
     bb.sort();
 
-    let a = aa[n-1];
+    let a = aa[n - 1];
     let mut ans = 0;
 
     while let Some(b) = bb.pop() {
