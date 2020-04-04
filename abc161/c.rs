@@ -1,15 +1,8 @@
 fn main() {
-    let v = read_vec::<u64>();
+    let v = read_vec::<i64>();
     let n = v[0];
     let k = v[1];
-
-    if n > k {
-        println!("{}", std::cmp::min(n % k, k - n % k));
-    } else if n == k {
-        println!("{}", 0);
-    } else {
-        println!("{}", std::cmp::min(n, k - n));
-    }
+    println!("{}", std::cmp::min((n % k).abs(), (k - n % k).abs()));
 }
 
 #[allow(dead_code)]
